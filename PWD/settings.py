@@ -121,5 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+
 LOGIN_REDIRECT_URL = 'home'
 # for redirecting user back to home page after logging in
