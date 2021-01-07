@@ -10,7 +10,15 @@
     </head>
     <body>
         <main>
-            {{user.last_login}}
+            <div>
+                <p>Last login:</p>
+                {{user.last_login}}
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{form}}
+                <p>Ok</p>
+            </form>
         </main>
         <script src="" async defer></script>
     </body>
