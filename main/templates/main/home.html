@@ -16,8 +16,9 @@
             </div>
             <form method="POST">
                 {% csrf_token %}
-                {{form}}
+                {{form.as_p}}
                 <p>Ok</p>
+                <input type='submit' value='Save'/>
             </form>
         </main>
         <script src="" async defer></script>
