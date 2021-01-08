@@ -14,7 +14,7 @@
                 <p>Last login:</p>
                 {{user.last_login}}
             </div>
-            <form method="POST">
+            <form method='POST'>
                 {% csrf_token %}
                 {{form.as_p}}
                 <p>Ok</p>
