@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import UserRegisterForm
-from django.contrib.auth.decorators import login_required
-
 # Create your views here.
+
+def account(request):
+    return HttpResponse("Account Page")
+
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -15,7 +18,3 @@ def register(request):
         "form": form,
     }
     return render(request, "users/register.html", context)
-
-@login_required
-def profile(request):
-    return render(request,'users/profile.html')

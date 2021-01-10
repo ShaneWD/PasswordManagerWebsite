@@ -6,6 +6,7 @@ class LocationForm(forms.ModelForm):
     class Meta:
         model = Location
         fields = [
+            'author',
             'website_name',
             'website_link',
             'website_username',

@@ -1,10 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from users.models import User
+from django.urls import reverse
 # Create your models here.
+
 class Location(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     website_name = models.CharField(max_length=50, unique=True)
-    website_link = models.URLField(max_length=200, null=True)
+    website_link = models.URLField(max_length=200, unique = True, null=True)
     website_username = models.CharField(max_length=50)
     website_password = models.CharField(max_length=50)
     website_notes = models.CharField( max_length=50, null=True)
@@ -14,3 +16,7 @@ class Location(models.Model):
 
     def __str__(self):
         return self.website_name
+
+    def get_absolute_url(self):
+        return reverse("home")
+    

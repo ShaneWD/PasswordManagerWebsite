@@ -9,18 +9,11 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <main>
-            <div>
-                <p>Last login:</p>
-                {{user.last_login}}
-            </div>
-            <form method='POST'>
-                {% csrf_token %}
-                {{form.as_p}}
-                <p>Ok</p>
-                <input type='submit' value='Save'/>
-            </form>
-        </main>
+        <header>
+            <h1>Home Page</h1>
+            
+        </header>
+        
         <script src="" async defer></script>
     </body>
 </html>
