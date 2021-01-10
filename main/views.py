@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Location
-from .forms import LocationForm
-
 from django.views.generic import CreateView
 
 # Create your views here.
