@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from .views import LocationCreateView
+from django.contrib.auth.decorators import login_required
+
 urlpatterns = [
     path('', views.home, name="home"),
-    path('new/', LocationCreateView.as_view(), name='create'),
+    path('new/', login_required(LocationCreateView.as_view()), name='create'),
 ]
