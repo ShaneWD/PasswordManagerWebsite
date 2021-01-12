@@ -32,9 +32,9 @@ def check(request):
     password = 'admin'
     currentpassword= request.user.password #hashed password in database
     if check_password(password, currentpassword):
-        return HttpResponse("True")
+        return HttpResponse("<h1>True</h1>")
     else:
-        return HttpResponse("False")
+        return HttpResponse("<h1>False</h1>")
         # http://www.learningaboutelectronics.com/Articles/How-to-check-a-password-in-Django.php 
 
 
