@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from .views import LocationCreateView
+from .views import *
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', views.home, name="home"),
     path('new/', login_required(LocationCreateView.as_view()), name='create'),
+    path('check/', views.check),
 ]
