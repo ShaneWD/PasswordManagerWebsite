@@ -22,11 +22,22 @@ class LocationCreateView(CreateView):
         'website_username',
         'website_password',
         'website_notes',
+        'master_password',
     ]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.website_password = encrypt((self.request.user.password).encode(), (form.instance.website_password).encode())
+
+        print(self.request.user)        
+        print(self.request.user.password)
+        print(form.instance.master_password)     
+
+        if not check_password(form.instance.master_password, self.request.user.password):
+            return HttpResponse("<h1>Error</h1>")
+
+        form.instance.website_password = encrypt((form.instance.master_password).encode(), (form.instance.website_password).encode())
+
+        form.instance.master_password = 'DEFAULT'
         return super().form_valid(form)
 
 @login_required

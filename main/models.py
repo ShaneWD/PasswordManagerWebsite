@@ -10,6 +10,7 @@ class Location(models.Model):
     website_username = models.CharField(max_length=50)
     website_password = models.CharField(max_length=50)
     website_notes = models.CharField( max_length=50, null=True)
+    master_password = models.CharField(max_length=200, default='DEFAULT')
 
     created = models.DateTimeField( auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
