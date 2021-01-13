@@ -1,11 +1,11 @@
 {%extends "main/home.html"%}
 {% load static %}
 {%block content%}
-        <form method="POST">
-            {% csrf_token %}
-            <p1 style="font-size: 20px">{{form.as_p}}</p1>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+    <form method="POST">
+        {% csrf_token %}
+        <p1 style="font-size: 20px">{{form.as_p}}</p1>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
 {%endblock content%}
