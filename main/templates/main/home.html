@@ -13,19 +13,30 @@
         <header>
             <ul class='u-list'>
                 <li class ='list'style="float:left"><a class="active" href="{% url 'home' %}">Home</a></li>
-                <li class ='list'><a href="{%url 'logout'%}">Logout</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class ='list'><a href="{%url 'logout'%}">Logout</a></li>
+                {% else %}
+                    <li class ='list'><a href="{%url 'login'%}">Login</a></li>
+                    <li class ='list'><a href="{%url 'register'%}">Register</a></li>
+                {% endif %}
+
                 <li class ='list'><a href="{% url 'create' %}">Add Password</a></li>
                 
-                <li class ='list'><a href="#about">About</a></li>
             </ul>
         </header>
         <main>
-            {% for row in location %}
-                <div>
-                    {{row}}
-                </div>
-                <br/>
-            {% endfor %}
+            <section>
+                {% block content %}
+                
+                    {% for row in location %}
+                        <div>
+                            {{row}}
+                        </div>
+                        <br/>
+                    {% endfor %}
+                {% endblock content %}
+            </section>
         </main>
         <footer>
 
