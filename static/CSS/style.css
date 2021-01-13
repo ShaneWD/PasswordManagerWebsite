@@ -1,5 +1,5 @@
 
-ul {
+.u-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -7,16 +7,16 @@ ul {
     background-color: #333;
 }
 
-li {
+.list {
     float: right;
     border-left:1px solid #bbb;
 }
 
-li:last-child {
+.list:last-child {
     border-right: none;
 }
 
-li a {
+.list a {
     display: block;
     color: white;
     text-align: center;
@@ -24,7 +24,7 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+.list a:hover:not(.active) {
     background-color: #111;
 }
 
