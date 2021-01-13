@@ -16,12 +16,13 @@
 
                 {% if user.is_authenticated %}
                     <li class ='list'><a href="{%url 'logout'%}">Logout</a></li>
+                    <li class ='list'><a href="{% url 'create' %}">Add Password</a></li>
                 {% else %}
                     <li class ='list'><a href="{%url 'login'%}">Login</a></li>
                     <li class ='list'><a href="{%url 'register'%}">Register</a></li>
                 {% endif %}
 
-                <li class ='list'><a href="{% url 'create' %}">Add Password</a></li>
+                
                 
             </ul>
         </header>
