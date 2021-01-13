@@ -8,9 +8,12 @@ from django.contrib.auth.hashers import check_password
 from .encryption import *
 
 # Create your views here.
+@login_required
 def home(request):
+    user = request.user
+    location = Location.objects.filter(author = user)
     context = {
-        
+        'location': location
     }
     return render(request, "main/home.html", context)
 
