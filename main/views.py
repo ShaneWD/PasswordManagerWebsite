@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.hashers import check_password
+from .encryption import *
 
 # Create your views here.
 def home(request):
@@ -25,6 +26,7 @@ class LocationCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.instance.website_password = encrypt((self.request.user.password).encode(), (form.instance.website_password).encode())
         return super().form_valid(form)
 
 @login_required
