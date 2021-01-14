@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('new/', login_required(LocationCreateView.as_view()), name='create'),
     path('check/', views.check),
+    path("view/<str:pk>/", views.view, name = "view"),
 ]

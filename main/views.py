@@ -58,4 +58,10 @@ def check(request):
         return HttpResponse("<h1>False</h1>")
         # http://www.learningaboutelectronics.com/Articles/How-to-check-a-password-in-Django.php 
 
+@login_required
+def view(request, pk):
+
+    location = Location.objects.get(id=pk)
+
+    return HttpResponse(location)
 
