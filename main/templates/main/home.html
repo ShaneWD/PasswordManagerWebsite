@@ -7,9 +7,10 @@
         <title>Password Manager</title>
         <meta name="description" content="secure password manager.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'CSS/style.css'  %}">
     </head>
-    <body>
+    <body style="text-align: center; font-family: 'Oxanium';">
         <header>
             <ul class='u-list'>
                 <li class ='list'style="float:left"><a class="active" href="{% url 'home' %}">Home</a></li>
@@ -32,7 +33,7 @@
                 
                     {% for row in location %}
                         <div>
-                            <h1 style='text-align: center;'><a class='link' href = "{% url 'view' row.id %}">{{row}}</a></h1>
+                            <h1 style="text-align: center;"><a class='link' href = "{% url 'view' row.id %}">{{row}}</a></h1>
                         </div>
                         <br/>
                     {% endfor %}
