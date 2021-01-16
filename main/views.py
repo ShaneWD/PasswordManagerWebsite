@@ -62,6 +62,8 @@ def check(request):
 def view(request, pk):
 
     location = Location.objects.get(id=pk)
+    context = {
+        'location': location
+    }
 
-    return HttpResponse(location)
-
+    return render(request, "main/detail_view.html", context)
