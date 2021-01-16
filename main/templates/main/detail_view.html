@@ -1,8 +1,20 @@
 {%extends "main/home.html"%}
 {% load static %}
 {%block content%}
-    <h1>Name: {{location}}</h1>
-    <h1>Link: {{location.website_link}}</h1>
-    <h1>Username: {{location.website_username}}</h1>
-    <h1>Notes: {{location.website_notes}}</h1>
+    <div>
+        <br/>
+        <h1 style="display:inline; color: #4CAF50">Name: </h1><h1 style="display:inline;">{{location}}</h1>
+    </div>
+    <div>
+        <br/>
+        <h1 style="display:inline; color: #4CAF50">Link: </h1><h1 style="display:inline;">{{location.website_link}}</h1>
+    </div>
+    <div>
+        <br/>
+        <h1 style="display:inline; color: #4CAF50">Username: </h1><h1 style="display:inline;">{{location.website_username}}</h1>
+    </div>
+    <div>
+        <br/>
+        <h1 style="display:inline; color: #4CAF50">Notes: </h1><h1 style="display:inline;">{{location.website_notes}}</h1>
+    </div>
 {%endblock content%}
