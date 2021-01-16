@@ -45,7 +45,7 @@ class LocationCreateView(CreateView):
         form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
         # to encrypt twice
 
-        form_master_password = 'DEFAULT'
+        form.instance.master_password = ''
         return super().form_valid(form)
 
 @login_required
