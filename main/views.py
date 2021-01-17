@@ -29,24 +29,25 @@ class LocationCreateView(CreateView):
     ]
 
     def form_valid(self, form):
-        user = self.request.user
-        form.instance.author = user
+        if form.is_valid():
+            user = self.request.user
+            form.instance.author = user
 
-        form_master_password = form.instance.master_password
+            form_master_password = form.instance.master_password
 
-        user_password = self.request.user.password
+            user_password = self.request.user.password
 
-        if not check_password(form_master_password, user_password):
-            return HttpResponse("<h1>Error</h1>")
-        
-        website_password = form.instance.website_password
+            if not check_password(form_master_password, user_password):
+                return HttpResponse("<h1>Error</h1>")
+            
+            website_password = form.instance.website_password
 
-        form.instance.website_password = encrypt(form_master_password.encode(), website_password.encode())
-        form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
-        # to encrypt twice
+            form.instance.website_password = encrypt(form_master_password.encode(), website_password.encode())
+            form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
+            # to encrypt twice
 
-        form.instance.master_password = ''
-        return super().form_valid(form)
+            form.instance.master_password = ''
+            return super().form_valid(form)
 
 @login_required
 def check(request):

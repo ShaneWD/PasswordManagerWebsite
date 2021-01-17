@@ -32,7 +32,6 @@
         <main>
             <section>
                 {% block content %}
-                
                     {% for row in location %}
                         <div>
                             <h1 style="text-align: center;"><a class='link' href = "{% url 'view' row.id %}">{{row}}</a></h1>
