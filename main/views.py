@@ -48,7 +48,8 @@ class LocationCreateView(CreateView):
 
             form.instance.master_password = ''
             return super().form_valid(form)
-
+        else:
+            return HttpResponse("<h1>Error</h1>")
 @login_required
 def check(request):
     password = 'admin'
@@ -61,6 +62,8 @@ def check(request):
 
 @login_required
 def view(request, pk):
+    if request.method =="POST":
+        return HttpResponse(request)
 
     location = Location.objects.get(id=pk)
     context = {

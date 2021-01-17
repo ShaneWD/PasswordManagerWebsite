@@ -20,4 +20,13 @@
         <br/>
         <h1 style="display:inline; color: #4CAF50">Notes: </h1><h1 style="display:inline;">{{location.website_notes}}</h1>
     </div>
+    <div>
+        <br/>
+        <form method = "POST">
+            {% csrf_token %}
+            <h1 style="display:inline; color: #4CAF50">Password</h1>
+            <input type="password" name="Password" style="display:inline;">
+            <input style="position: absolute;left: 50%;display:block;" type="submit" value="Submit">
+        </form>
+    </div>
 {%endblock content%}
