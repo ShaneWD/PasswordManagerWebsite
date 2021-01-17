@@ -28,6 +28,10 @@
     background-color: #111;
 }
 
+.list a:hover {
+    background-color:#367a38;
+}
+
 .active {
     background-color: #4CAF50;
 }
