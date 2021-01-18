@@ -63,19 +63,24 @@ def check(request):
 @login_required
 def view(request, pk):
     location = Location.objects.get(id=pk)
+    message = ''
     if request.method =="POST":
         user_password = location.website_password
         password = request.POST.get("password_field")
-        decrypted = decrypt(password.encode(), user_password)
-        decrypted = decrypt(password.encode(), decrypted)
-        context = {
-            'location': location,
-            'decrypted': decrypted
-        }
-        return render(request, "main/detail_view.html", context)
+        if decrypted := decrypt(password.encode(), user_password):
+            decrypted = decrypt(password.encode(), decrypted)
+            context = {
+                'location': location,
+                'decrypted': decrypted,
+                'confirmed': True,
+            }
+            return render(request, "main/detail_view.html", context)
+        else:
+            message = 'try again'
     
     context = {
-        'location': location
+        'location': location,
+        'message': message,
     }
 
     return render(request, "main/detail_view.html", context)

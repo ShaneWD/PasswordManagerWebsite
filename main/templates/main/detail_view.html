@@ -22,15 +22,23 @@
     </div>
     <div>
         <br/>
-        <form method = "POST">
-            {% csrf_token %}
-            <h2 style="color: #4CAF50">Provide master password to view {{location}} password:</h2>
+        {% if not confirmed%}
+            <form method = "POST">
+                {% csrf_token %}
+                <h2 style="color: #4CAF50">Provide master password to view {{location}} password:</h2>
 
-            <input type="password" name = "password_field" name="Password">
+                <input type="password" name = "password_field" name="Password">
 
-            <input type="submit" value="Submit">
-        </form>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
         <br/>
-        <h1>{{decrypted}}</h1>
+        <div>
+            {% if confirmed %}
+                <h1 style="display:inline; color: #4CAF50">Password: </h1><h1 style="display:inline;">{{decrypted}}</h1>
+            {% else %}
+                <h1>{{message}}</h1>
+            {% endif %}
+        </div>
     </div>
 {%endblock content%}
