@@ -8,6 +8,9 @@ Currently, it uses the master account password to encrypt the stored passwords *
 
 The navbar adapts to whether the user is logged in or not
 
+## Notes:
+- The username and password for super user / admin is "admin"
+
 ## How to set up project (Windows CMD)
 ```
 virtualenv project_name
