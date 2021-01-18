@@ -62,14 +62,13 @@ def check(request):
 
 @login_required
 def view(request, pk):
+    location = Location.objects.get(id=pk)
     if request.method =="POST":
-        import string
-        epic = request.POST.get("testing123")
-        # test = test.partition(spl_word)[2] 
-        return HttpResponse(epic)
-
-    else:
-        location = Location.objects.get(id=pk)
+        context = {
+            'location': location,
+            'password': request.POST.get("password_field")
+        }
+        return render(request, "main/detail_view.html", context)
     
     context = {
         'location': location
