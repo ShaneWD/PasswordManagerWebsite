@@ -64,9 +64,13 @@ def check(request):
 def view(request, pk):
     location = Location.objects.get(id=pk)
     if request.method =="POST":
+        user_password = location.website_password
+        password = request.POST.get("password_field")
+        decrypted = decrypt(password.encode(), user_password)
+        decrypted = decrypt(password.encode(), decrypted)
         context = {
             'location': location,
-            'password': request.POST.get("password_field")
+            'decrypted': decrypted
         }
         return render(request, "main/detail_view.html", context)
     
