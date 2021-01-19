@@ -4,7 +4,7 @@
 <title>Login</title>
 {% endblock title %}
 {%block content%}
-    <form method="POST">
+    <form method="POST" class = "div-container">
         {% csrf_token %}
         <p1 style="font-size: 20px">{{form.as_p}}</p1>
         <div>

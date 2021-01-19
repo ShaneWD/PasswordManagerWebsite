@@ -11,11 +11,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'CSS/style.css'  %}">
+        <link rel="icon" type="image/png" href="{% static 'images/logo.png'  %}"/>
     </head>
     <body style="text-align: center; font-family: 'Oxanium';">
         <header>
             <ul class='u-list'>
-                <li class ='list'style="float:left"><a class="active" href="{% url 'home' %}">Home</a></li>
+                <li>
+                
+                    <a href="{%url 'home'%}"><img src="{% static 'images/logo.png'  %}"
+                    style="width: 2%; height 2%; padding: 10px;float:left"></a> 
+                
+                </li>
 
                 {% if user.is_authenticated %}
                     <li class ='list'><a href="{%url 'logout'%}">Logout</a></li>
@@ -31,10 +37,11 @@
         </header>
         <main>
             <section>
+                <br/>
                 {% block content %}
                     {% for row in location %}
                         <div>
-                            <h1 style="text-align: center;"><a class='link' href = "{% url 'view' row.id %}">{{row}}</a></h1>
+                            <h1 style="text-align: center; font-size:40px"><a class='link' href = "{% url 'view' row.id %}">{{row}}</a></h1>
                         </div>
                         <br/>
                     {% endfor %}

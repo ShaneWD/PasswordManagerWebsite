@@ -4,10 +4,10 @@
 <title>Create Account</title>
 {% endblock title %}
 {%block content%}
-    <form method="POST">
+    <form method="POST" class = "div-container" style="text-align:centered; text-align:left">
         {% csrf_token %}
-        <p1 style="font-size: 20px">{{form.as_p}}</p1>
-        <div>
+        <p1 style="font-size: 20px;">{{form.as_p}}</p1>
+        <div >
             <input type="submit" value="Register">
         </div>
     </form>

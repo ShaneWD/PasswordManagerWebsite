@@ -4,9 +4,11 @@
 <title>Logout</title>
 {% endblock title %}
 {%block content%}
-    <h2>Successfuly logged out</h2>
+    <div class = "div-container">
+        <h2 >Successfuly logged out</h2>
 
-    <div>
-        <a href="{%url 'login'%}">Login</a>
+        <div>
+            <a href="{%url 'login'%}">Login</a>
+        </div>
     </div>
 {%endblock content%}
