@@ -14,31 +14,35 @@ The navbar adapts to whether the user is logged in or not
 ###### This video was created when release v1.0 was published ( https://github.com/ShaneWD/PasswordManagerWebsite/releases/tag/v1.0 )
 
 ## How to set up project (Windows CMD)
+###### create virual environment 
 ```
 virtualenv project_name
 ```
-###### create virual environment 
+###### change directories to virual environment 
 ```
 cd project_name
 ```
-###### change directories to virual environment 
+###### activate virual environment 
 ```
 project_name\activate
 ```
-###### activate virual environment 
+###### clone the project
 ```
 git clone https://github.com/ShaneWD/PasswordManagerWebsite.git
 ```
-###### clone the project
+###### change directories into the project
 ```
 cd PasswordManagerWebsite
 ```
-###### change directories into the project
+###### install the nessessary python packages
 ```
 pip install requirements.txt
 ```
-###### install the nessessary python packages
+###### start the test server 
 ```
 python manage.py runserver
 ```
-###### start the test server 
+###### setup SQLite database
+```
+python manage.py migrate
+```
