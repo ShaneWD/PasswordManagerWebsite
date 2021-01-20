@@ -4,7 +4,10 @@ from .forms import UserRegisterForm
 # Create your views here.
 
 def account(request):
-    return HttpResponse("Account Page")
+    context = {
+        'user': request.user,
+    }
+    return render(request, "users/account.html", context)
 
 def register(request):
     if request.method == "POST":
