@@ -6,25 +6,25 @@
 {%block content%}
     <div class="div-container">
         <div>
-            <h1 style="display:inline; color: #4CAF50; position: relative;text-align: left">Name: </h1><h1 style="display:inline;">{{location}}</h1>
+            <h1 style="display:inline; color: #4CAF50; position: relative;text-align: left">Name: </h1><h1 style="display:inline; word-wrap: break-word">{{location}}</h1>
         </div>
         <div>
             <br/>
-            <h1 style="display:inline; color: #4CAF50">Link: </h1><h1 style="display:inline;">{{location.website_link}}</h1>
+            <h1 style="display:inline; color: #4CAF50">Link: </h1><h1 style="display:inline; word-wrap: break-word">{{location.website_link}}</h1>
         </div>
         <div>
             <br/>
-            <h1 style="display:inline; color: #4CAF50">Username: </h1><h1 style="display:inline;">{{location.website_username}}</h1>
+            <h1 style="display:inline; color: #4CAF50">Username: </h1><h1 style="display:inline; word-wrap: break-word">{{location.website_username}}</h1>
         </div>
         <div>
             <br/>
-            <h1 style="display:inline; color: #4CAF50">Notes: </h1><h1 style="display:inline;">{{location.website_notes}}</h1>
+            <h1 style="display:inline; color: #4CAF50">Notes: </h1><h1 style="display:inline; word-wrap: break-word">{{location.website_notes}}</h1>
         </div>
         <div>
             {% if not confirmed%}
                 <form method = "POST">
                     {% csrf_token %}
-                    <h2 style="color: #4CAF50">Provide master password to view {{location}} password:</h2>
+                    <h2 style="color: #4CAF50;">Provide master password to view {{location}} password:</h2>
 
                     <input type="password" name = "password_field" name="Password">
 
@@ -34,7 +34,8 @@
             <div>
                 {% if confirmed %}
                     <br/>
-                    <h1 style="display:inline; color: #4CAF50">Password: </h1><h1 style="display:inline;">{{decrypted}}</h1>
+                    <h1 style="display:inline; color: #4CAF50">Password: </h1>
+                    <h1 style="display:inline; word-wrap: break-word">{{decrypted}}</h1>
                 {% else %}
                     <h1>{{message}}</h1>
                 {% endif %}
