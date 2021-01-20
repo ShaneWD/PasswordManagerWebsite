@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Location
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from django.contrib.auth.hashers import check_password
 from .encryption import *
@@ -38,7 +39,8 @@ class LocationCreateView(CreateView):
             user_password = self.request.user.password
 
             if not check_password(form_master_password, user_password):
-                return HttpResponse("<h1>Error</h1>")
+                messages.add_message(self.request, messages.ERROR, 'Wrong Master Password')
+                return redirect("create")
             
             website_password = form.instance.website_password
 
@@ -49,7 +51,8 @@ class LocationCreateView(CreateView):
             form.instance.master_password = ''
             return super().form_valid(form)
         else:
-            return HttpResponse("<h1>Error</h1>")
+            messages.error(self.request, "Error")
+            messages.add_message(self.request, messages.ERROR, 'Error')
 @login_required
 def check(request):
     password = 'admin'
