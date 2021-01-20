@@ -38,11 +38,12 @@ cd PasswordManagerWebsite
 ```
 pip install requirements.txt
 ```
-###### start the test server 
-```
-python manage.py runserver
-```
 ###### setup SQLite database
 ```
 python manage.py migrate
 ```
+###### start the test server 
+```
+python manage.py runserver
+```
+
