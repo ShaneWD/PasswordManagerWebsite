@@ -1,4 +1,8 @@
 
+.main-color {
+    color: #15af3c;
+}
+
 .u-list {
     list-style-type: none;
     margin: 0;
@@ -33,7 +37,7 @@
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #15af3c;
 }
 
 .link:link {
@@ -47,7 +51,7 @@
 }
 
 .link:hover {
-    color:#4CAF50;
+    color:#15af3c;
     text-decoration: none;
 }
 
@@ -56,7 +60,7 @@
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4CAF50;
+    background-color: #15af3c;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -79,7 +83,7 @@ input, select {
   
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #15af3c;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -89,7 +93,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #15af3c;
 }
 .div-container {
     border-radius: 5px;
