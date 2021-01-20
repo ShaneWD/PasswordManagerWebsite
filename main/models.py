@@ -5,8 +5,8 @@ from django.urls import reverse
 
 class Location(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    website_name = models.CharField(max_length=50, unique=True)
-    website_link = models.URLField(max_length=200, unique = True, null=True)
+    website_name = models.CharField(max_length=50)
+    website_link = models.URLField(max_length=200, null=True)
     website_username = models.CharField(max_length=50)
     website_password = models.CharField(max_length=50)
     website_notes = models.CharField( max_length=50, null=True)
