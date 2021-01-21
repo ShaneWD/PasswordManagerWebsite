@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import User
 # Create your views here.
+
 
 @login_required
 def account(request):
@@ -12,6 +15,7 @@ def account(request):
     }
 
     return render(request, "users/account.html", context)
+
 
 def register(request):
     if request.method == "POST":
@@ -25,3 +29,15 @@ def register(request):
         "form": form,
     }
     return render(request, "users/register.html", context)
+
+@login_required
+def delete_account(request):
+    username = request.user
+    user = User.objects.get(username = username)
+    user.delete()
+    messages.success(request, f""" "{user}" Has Been Deleted""")
+    context = {
+
+    }
+    return render(request, 'users/register.html', context)
+
