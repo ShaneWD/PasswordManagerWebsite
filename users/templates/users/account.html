@@ -4,5 +4,27 @@
 <title>Account</title>
 {% endblock title %}
 {%block content%}
-    {{user}}
+    <div class = "div-container">
+        <div class = "div-container">
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1><h1 style="display:inline; word-wrap: break-word">{{user}}</h1>
+        </div>
+        <br />
+        <br />
+        <div class = "div-container">
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Account Created on: </h1><h1 style="display:inline; word-wrap: break-word">{{user.date_joined | date:"F y, Y"}}</h1>
+        </div class = "div-container">
+        <br />
+        <br />
+        <div class = "div-container">
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Email: </h1><h1 style="display:inline; word-wrap: break-word">{{user.email}}</h1>
+        </div>
+        <br />
+        <br />
+        <div class = "div-container">
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Name: </h1><h1 style="display:inline; word-wrap: break-word">{{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <br />
+        <br />
+    </div>
+
 {%endblock content%}
