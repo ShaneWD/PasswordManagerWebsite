@@ -4,6 +4,9 @@
 <title>Profile: {{user}}</title>
 {% endblock title %}
 {%block content%}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
     <div class = "div-container" style = "background-color: #c0bdbd; width: 75%;">
         <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1><h1 style="display:inline; word-wrap: break-word">{{user}}</h1>
@@ -29,6 +32,23 @@
             <h1 style="text-align: center; font-size:30px; color: #9c0b0b"><a class='hover-color' href = "{% url 'delete' %}">Delete Account</a></h1>
         </div>
         <br />
+        <br /> 
+        <div>
+
+            <input style = "background-color: red; width: 54%"type="submit" value="Submit">
+        </div>
+        <div class="div-container" style="box-shadow: none; width=50%">
+            <form method = "POST">
+                {% csrf_token %}
+                <h2 class = "main-color">Provide master password change it:</h2>
+
+                <input type="password" name = "password_field" name="Password">
+
+                <input type="password" name = "new_password" name="Password">
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 
 {%endblock content%}
