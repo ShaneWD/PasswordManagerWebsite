@@ -4,7 +4,22 @@
 <title>Login</title>
 {% endblock title %}
 {%block content%}
-    <form method="POST" class = "div-container">
-        <h1></h1>
-    </form>
+    {% for message in messages %}
+        <div class="div-container">
+            <h1>{{message}}</h1>
+        </div>
+        <br />
+        <br />
+    {% endfor %}
+    <div class = "div-container" >
+        <form method = "POST" name="delete_account_form">
+            {% csrf_token %}
+            <h1 style="text-align: center; font-size:30px; color: red">Delete Account</h1>
+            
+            <p1 style="float: left">Master Password:</p1>
+            <input type="password" name="master_password">
+
+            <input style = "background-color: red; width: 40%"type="submit" value="Permanently Delete Master Account">
+        </form>
+    </div>
 {%endblock content%}
