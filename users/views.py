@@ -36,8 +36,11 @@ def delete_account(request):
     user = User.objects.get(username = username)
     user.delete()
     messages.success(request, f""" "{user}" Has Been Deleted""")
-    context = {
 
+    form = UserRegisterForm()
+    context = {
+        "form": form,
     }
-    return render(request, 'users/register.html', context)
+
+    return render(request, "users/register.html", context)
 
