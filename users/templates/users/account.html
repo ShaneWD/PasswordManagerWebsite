@@ -1,29 +1,33 @@
 {%extends "main/home.html"%}
 {% load static %}
 {% block title %}
-<title>Account</title>
+<title>Profile: {{user}}</title>
 {% endblock title %}
 {%block content%}
-    <div class = "div-container">
-        <div class = "div-container">
+    <div class = "div-container" style = "background-color: #c0bdbd; width: 75%;">
+        <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1><h1 style="display:inline; word-wrap: break-word">{{user}}</h1>
         </div>
         <br />
         <br />
-        <div class = "div-container">
+        <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Account Created on: </h1><h1 style="display:inline; word-wrap: break-word">{{user.date_joined | date:"F y, Y"}}</h1>
         </div class = "div-container">
         <br />
         <br />
-        <div class = "div-container">
+        <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Email: </h1><h1 style="display:inline; word-wrap: break-word">{{user.email}}</h1>
         </div>
         <br />
         <br />
-        <div class = "div-container">
+        <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Name: </h1><h1 style="display:inline; word-wrap: break-word">{{user.first_name}} {{user.last_name}}</h1>
         </div>
         <br />
+        <br />
+        <div class = "div-container" style = "box-shadow:none;">
+            <h1 style="text-align: center; font-size:30px; color: #9c0b0b"><a class='hover-color' href = "#">Delete Account</a></h1>
+        </div>
         <br />
     </div>
 

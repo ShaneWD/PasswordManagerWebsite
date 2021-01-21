@@ -103,3 +103,49 @@ input[type=submit]:hover {
     box-shadow: 1px 2px 6px -1px;
     display: inline-block;
 }
+
+
+.list {
+    float: right;
+    border-left:1px solid #bbb;
+}
+
+.list:last-child {
+    border-right: none;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.hover-color a:hover:not(.active) {
+    background-color: #111;
+}
+
+.hover-color a:hover {
+    background-color:#367a38;
+}
+
+
+.hover-color:link {
+    color: black;
+    text-decoration: none;
+}
+
+.hover-color:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.hover-color:hover {
+    color:#ff0000;
+    text-decoration: none;
+}
+
+.hover-color:active {
+    text-decoration: none;
+}
