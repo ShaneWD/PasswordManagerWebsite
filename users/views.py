@@ -54,15 +54,24 @@ def register(request):
 
 @login_required
 def delete_account(request):
-    username = request.user
-    user = User.objects.get(username = username)
-    user.delete()
-    messages.success(request, f""" "{user}" Has Been Deleted""")
+    if request.method == 'POST':
+        form_master_password = request.POST.get("master_password")
+        user_password = request.user.password
+        if check_password(form_master_password, user_password):
+            username = request.user
+            user = User.objects.get(username = username)
+            user.delete()
+            messages.success(request, f""" "{user}" Has Been Deleted""")
 
-    form = UserRegisterForm()
-    context = {
-        "form": form,
-    }
+            form = UserRegisterForm()
+            context = {
+                "form": form,
+            }
 
-    return render(request, "users/register.html", context)
+            return render(request, "users/register.html", context)
+        else:
+            messages.error(request, "Invalid Password")
+            return render(request, "users/delete_account.html")
+    else:
+        return render(request, "users/delete_account.html")
 

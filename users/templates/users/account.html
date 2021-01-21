@@ -5,7 +5,11 @@
 {% endblock title %}
 {%block content%}
     {% for message in messages %}
-        {{message}}
+        <div class="div-container">
+            <h1>{{message}}</h1>
+        </div>
+        <br />
+        <br />
     {% endfor %}
     <div class = "div-container" style = "background-color: #c0bdbd; width: 75%;">
         <div class = "div-container" style = "box-shadow:none">
@@ -28,28 +32,29 @@
         </div>
         <br />
         <br />
-        <div class = "div-container" style = "box-shadow:none;">
-            <h1 style="text-align: center; font-size:30px; color: #9c0b0b"><a class='hover-color' href = "{% url 'delete' %}">Delete Account</a></h1>
-        </div>
-        <br />
-        <br /> 
-        <div>
-            <input style = "background-color: red; width: 54%"type="submit" value="Submit">
-        </div>
         <div class="div-container" style="box-shadow: none; width=50%">
             <form method = "POST">
                 {% csrf_token %}
                 <h2 class = "main-color">Change Master Password</h2>
 
                 <p1 style="float: left">Master Password:</p1>
-                <input type="password" name = "password_field" name="Password">
+                <input type="password" name = "password_field">
 
                 <p1 style="float: left">New Password:</p1>
-                <input type="password" name = "new_password" name="Password">
+                <input type="password" name = "new_password">
 
                 <input type="submit" value="Submit">
             </form>
         </div>
+        <br />
+        <br /> 
+        <div class = "div-container" style = "box-shadow:none; width:25%">
+
+            <p1 style="text-align: center; font-size:30px; color: #9c0b0b"><a class='hover-color' href = "{% url 'delete' %}">Delete Account</a></p1>
+                
+        </div>
+        <br />
+        <br /> 
     </div>
 
 {%endblock content%}
