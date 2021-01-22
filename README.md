@@ -34,7 +34,7 @@ git clone https://github.com/ShaneWD/PasswordManagerWebsite.git
 ```
 cd PasswordManagerWebsite
 ```
-###### install the nessessary python packages
+###### install the necessary python packages
 ```
 pip install requirements.txt
 ```
