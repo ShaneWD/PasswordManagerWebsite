@@ -36,7 +36,7 @@ def account(request):
             user.set_password(requested_password)
             user.save()
             messages.success(request, f""" Password for "{user}" was changed!""")
-            change_master_secondary(request, post_password, user)
+            change_master_secondary(request, post_password, user, requested_password)
             context = {
                 'confirmed': True,
             }
@@ -86,17 +86,18 @@ def delete_account(request):
     else:
         return render(request, "users/delete_account.html")
 
-def change_master_secondary(request, password, user):
+def change_master_secondary(request, password, user, new_pwd):
     #for location in Location.objects.filter(author=user):
         #print(location.objects.all)
     #user = User.objects.filter(username=user).first()
     print(Location.objects.filter(author=user).all())
 
     for i, c in enumerate(Location.objects.filter(author=user)):
-        print (i, c, type(c))
-        print(c.website_password)
-        print(password)
         decrypted = decrypt(password.encode(), c.website_password)
         decrypted = decrypt(password.encode(), decrypted)
-        print(decrypted)
+
+        encrypted = encrypt(new_pwd.encode(), decrypted.encode())
+        encrypted = encrypt(new_pwd.encode(), encrypted.encode())
         
+        c.website_password = encrypted
+        c.save()
