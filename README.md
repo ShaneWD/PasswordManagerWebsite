@@ -24,7 +24,7 @@ cd project_name
 ```
 ###### activate virual environment 
 ```
-project_name\activate
+scripts\activate
 ```
 ###### clone the project
 ```
