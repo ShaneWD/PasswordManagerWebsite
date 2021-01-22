@@ -35,8 +35,10 @@ class LocationCreateView(CreateView):
             form.instance.author = user
 
             form_master_password = form.instance.master_password
+            # the field titled "master_password" in Location model 
 
             user_password = self.request.user.password
+            # hashed master password in database 
 
             if not check_password(form_master_password, user_password):
                 messages.add_message(self.request, messages.ERROR, 'Wrong Master Password')
@@ -45,23 +47,20 @@ class LocationCreateView(CreateView):
             website_password = form.instance.website_password
 
             form.instance.website_password = encrypt(form_master_password.encode(), website_password.encode())
+
             form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
             # to encrypt twice
 
             form.instance.master_password = ''
+            # Clears out "master_password" of Location so that it isn't stored database 
+            # If not, it will be stored as plain text
+            # Storing plain text passwords has to be avoided at all costs
+            
             return super().form_valid(form)
         else:
             messages.error(self.request, "Error")
             messages.add_message(self.request, messages.ERROR, 'Error')
-@login_required
-def check(request):
-    password = 'admin'
-    currentpassword= request.user.password #hashed password in database
-    if check_password(password, currentpassword):
-        return HttpResponse("<h1>True</h1>")
-    else:
-        return HttpResponse("<h1>False</h1>")
-        # http://www.learningaboutelectronics.com/Articles/How-to-check-a-password-in-Django.php 
+
 
 @login_required
 def view(request, pk):
