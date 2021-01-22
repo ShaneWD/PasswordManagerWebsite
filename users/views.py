@@ -14,7 +14,7 @@ def account(request):
         master_password = request.user.password
         post_password = request.POST.get("password_field")
         if not check_password(post_password, master_password):
-            messages.error(request, "Password doesn't match!")
+            messages.error(request, "Incorrect Master Password")
             context = {
                 'user': request.user,
                 'confirmed': False, 
@@ -22,7 +22,14 @@ def account(request):
             return render(request, "users/account.html", context)
 
         else:
-            post_password = request.POST.get("new_password")
+            post_password = request.POST.get("new_password1")
+            if post_password != request.POST.get("new_password2"):
+                messages.error(request, f""" New passwords do not match!""")
+                context = {
+                'user': request.user,
+                'confirmed': False, 
+                }
+                return render(request, "users/account.html", context)
             user = User.objects.get(username=request.user)
             user.set_password(post_password)
             user.save()
