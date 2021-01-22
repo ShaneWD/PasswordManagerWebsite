@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import User
 from django.contrib.auth.hashers import check_password
+from main.models import Location
+from main.encryption import *
 # Create your views here.
 
 
@@ -22,8 +24,8 @@ def account(request):
             return render(request, "users/account.html", context)
 
         else:
-            post_password = request.POST.get("new_password1")
-            if post_password != request.POST.get("new_password2"):
+            requested_password = request.POST.get("new_password1")
+            if requested_password != request.POST.get("new_password2"):
                 messages.error(request, f""" New passwords do not match!""")
                 context = {
                 'user': request.user,
@@ -31,7 +33,7 @@ def account(request):
                 }
                 return render(request, "users/account.html", context)
             user = User.objects.get(username=request.user)
-            user.set_password(post_password)
+            user.set_password(requested_password)
             user.save()
             messages.success(request, f""" Password for "{user}" was changed!""")
             change_master_secondary(request, post_password, user)
@@ -92,3 +94,9 @@ def change_master_secondary(request, password, user):
 
     for i, c in enumerate(Location.objects.filter(author=user)):
         print (i, c, type(c))
+        print(c.website_password)
+        print(password)
+        decrypted = decrypt(password.encode(), c.website_password)
+        decrypted = decrypt(password.encode(), decrypted)
+        print(decrypted)
+        
