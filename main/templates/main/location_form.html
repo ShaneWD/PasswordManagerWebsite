@@ -5,15 +5,13 @@
 {% endblock title %}
 {%block content%}
     
-    {% if messages %}
-        {% for message in messages %}
-            <div class="div-container">
-                <h1>{{message}}</h1>
-            </div>
-            <br />
-            <br />
-        {% endfor %}
-    {% endif %}
+    {% for message in messages %}
+        <div class="div-container">
+            <h1>{{message}}</h1>
+        </div>
+        <br />
+        <br />
+    {% endfor %}
 
     <form method="POST">
         {% csrf_token %}

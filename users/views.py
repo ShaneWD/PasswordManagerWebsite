@@ -26,10 +26,11 @@ def account(request):
             user = User.objects.get(username=request.user)
             user.set_password(post_password)
             user.save()
+            messages.success(request, f""" Password for "{user}" was changed!""")
             context = {
                 'confirmed': True,
             }
-            return render(request, "users/account.html", context)
+            return redirect('login')
     
     context = {
         'user': request.user,

@@ -4,6 +4,13 @@
 <title>Login</title>
 {% endblock title %}
 {%block content%}
+    {% for message in messages %}
+        <div class="div-container">
+            <h1>{{message}}</h1>
+        </div>
+        <br />
+        <br />
+    {% endfor %}
     <form method="POST" class = "div-container">
         {% csrf_token %}
         <p1 style="font-size: 20px">{{form.as_p}}</p1>

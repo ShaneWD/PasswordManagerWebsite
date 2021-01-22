@@ -75,7 +75,7 @@ def view(request, pk):
             context = {
                 'location': location,
                 'decrypted': decrypted,
-                'confirmed': True,
+                'confirmed': True, # user provided the right password
             }
             return render(request, "main/detail_view.html", context)
         else:
