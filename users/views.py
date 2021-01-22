@@ -91,4 +91,4 @@ def change_master_secondary(request, password, user):
     print(Location.objects.filter(author=user).all())
 
     for i, c in enumerate(Location.objects.filter(author=user)):
-        print i, c, type(c)     
+        print (i, c, type(c))
