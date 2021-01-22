@@ -32,11 +32,15 @@ def account(request):
                 'confirmed': False, 
                 }
                 return render(request, "users/account.html", context)
+
             user = User.objects.get(username=request.user)
             user.set_password(requested_password)
             user.save()
+
             messages.success(request, f""" Password for "{user}" was changed!""")
-            change_master_secondary(request, post_password, user, requested_password)
+
+            change_master_secondary(post_password, user, requested_password)
+
             context = {
                 'confirmed': True,
             }
@@ -58,10 +62,12 @@ def register(request):
             return redirect('home')
     else:
         form = UserRegisterForm()
+    
     context = {
         "form": form,
     }
     return render(request, "users/register.html", context)
+
 
 @login_required
 def delete_account(request):
@@ -80,13 +86,16 @@ def delete_account(request):
             }
 
             return render(request, "users/register.html", context)
+
         else:
             messages.error(request, "Invalid Password")
             return render(request, "users/delete_account.html")
+            
     else:
         return render(request, "users/delete_account.html")
 
-def change_master_secondary(request, password, user, new_pwd):
+
+def change_master_secondary( password, user, new_pwd):
     for i, c in enumerate(Location.objects.filter(author=user)):
         decrypted = decrypt(password.encode(), c.website_password)
         decrypted = decrypt(password.encode(), decrypted)
