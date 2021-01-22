@@ -87,11 +87,6 @@ def delete_account(request):
         return render(request, "users/delete_account.html")
 
 def change_master_secondary(request, password, user, new_pwd):
-    #for location in Location.objects.filter(author=user):
-        #print(location.objects.all)
-    #user = User.objects.filter(username=user).first()
-    print(Location.objects.filter(author=user).all())
-
     for i, c in enumerate(Location.objects.filter(author=user)):
         decrypted = decrypt(password.encode(), c.website_password)
         decrypted = decrypt(password.encode(), decrypted)
