@@ -64,7 +64,8 @@ class LocationCreateView(CreateView):
 
 @login_required
 def view(request, pk):
-    location = Location.objects.get(id=pk)
+    user = request.user
+    location = Location.objects.get(id=pk, author=user)
     message = ''
     if request.method =="POST":
         user_password = location.website_password
