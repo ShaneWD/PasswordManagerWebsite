@@ -43,20 +43,20 @@ class LocationCreateView(CreateView):
             if not check_password(form_master_password, user_password):
                 messages.add_message(self.request, messages.ERROR, 'Wrong Master Password')
                 return redirect("create")
-            
-            website_password = form.instance.website_password
+            else: 
+                website_password = form.instance.website_password
 
-            form.instance.website_password = encrypt(form_master_password.encode(), website_password.encode())
+                form.instance.website_password = encrypt(form_master_password.encode(), website_password.encode())
 
-            form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
-            # to encrypt twice
+                form.instance.website_password = encrypt(form_master_password.encode(), form.instance.website_password.encode())
+                # to encrypt twice
 
-            form.instance.master_password = ''
-            # Clears out "master_password" of Location so that it isn't stored database 
-            # If not, it will be stored as plain text
-            # Storing plain text passwords has to be avoided at all costs
-            
-            return super().form_valid(form)
+                form.instance.master_password = ''
+                # Clears out "master_password" of Location so that it isn't stored database 
+                # If not, it will be stored as plain text
+                # Storing plain text passwords has to be avoided at all costs
+                
+                return super().form_valid(form)
         else:
             messages.error(self.request, "Error")
             messages.add_message(self.request, messages.ERROR, 'Error')
