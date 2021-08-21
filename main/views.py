@@ -82,7 +82,7 @@ def view(request, pk):
             }
             return render(request, "main/detail_view.html", context)
         else:
-            messages.error(request, "Error: Invalid link.")
+            messages.error(request, "Incorrect Master Password!")
     
     context = {
         'location': location,

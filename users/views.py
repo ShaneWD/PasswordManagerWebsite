@@ -78,7 +78,7 @@ def delete_account(request):
             username = request.user
             user = User.objects.get(username = username)
             user.delete()
-            messages.success(request, f""" "{user}" Has Been Deleted""")
+            messages.success(request, f""" User "{user}" has been deleted!""")
 
             form = UserRegisterForm()
             context = {
