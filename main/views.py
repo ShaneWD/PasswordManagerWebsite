@@ -69,7 +69,7 @@ def view(request, pk):
         location = Location.objects.get(id=pk, author=user)
     except:
         messages.error(request, "Error: Invalid link.")
-        return render(request, "main/home.html")
+        return redirect("home")
     if request.method =="POST":
         user_password = location.website_password
         password = request.POST.get("password_field")
