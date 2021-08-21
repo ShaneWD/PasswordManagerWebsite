@@ -82,11 +82,10 @@ def view(request, pk):
             }
             return render(request, "main/detail_view.html", context)
         else:
-            message = 'try again'
+            messages.error(request, "Error: Invalid link.")
     
     context = {
         'location': location,
-        'message': message,
     }
 
     return render(request, "main/detail_view.html", context)
