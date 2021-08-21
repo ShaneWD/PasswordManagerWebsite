@@ -65,8 +65,11 @@ class LocationCreateView(CreateView):
 @login_required
 def view(request, pk):
     user = request.user
-    location = Location.objects.get(id=pk, author=user)
-    message = ''
+    try:
+        location = Location.objects.get(id=pk, author=user)
+    except:
+        messages.error(request, "Error: Invalid link.")
+        return render(request, "main/home.html")
     if request.method =="POST":
         user_password = location.website_password
         password = request.POST.get("password_field")
