@@ -4,13 +4,6 @@
 <title>Delete Account: "{{user}}"</title>
 {% endblock title %}
 {%block content%}
-    {% for message in messages %}
-        <div class="div-container">
-            <h1>{{message}}</h1>
-        </div>
-        <br />
-        <br />
-    {% endfor %}
     <div class = "div-container" >
         <form method = "POST" name="delete_account_form">
             {% csrf_token %}

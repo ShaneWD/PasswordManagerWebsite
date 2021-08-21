@@ -41,7 +41,7 @@ class LocationCreateView(CreateView):
             # hashed master password in database 
 
             if not check_password(form_master_password, user_password):
-                messages.add_message(self.request, messages.ERROR, 'Wrong Master Password')
+                messages.error(self.request, "Error: Invalid link.")
                 return redirect("create")
             else: 
                 website_password = form.instance.website_password

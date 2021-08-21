@@ -4,13 +4,6 @@
 <title>Profile: {{user}}</title>
 {% endblock title %}
 {%block content%}
-    {% for message in messages %}
-        <div class="div-container">
-            <h1>{{message}}</h1>
-        </div>
-        <br />
-        <br />
-    {% endfor %}
     <div class = "div-container" style = "background-color: #c0bdbd; width: 75%;">
         <div class = "div-container" style = "box-shadow:none">
             <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1><h1 style="display:inline; word-wrap: break-word">{{user}}</h1>
