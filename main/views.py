@@ -89,3 +89,18 @@ def view(request, pk):
     }
 
     return render(request, "main/detail_view.html", context)
+
+
+@login_required
+def alter(request, pk):
+    user = request.user 
+    try:
+        location = Location.objects.get(id=pk, author=user)
+    except:
+        messages.error(request, "Error: Invalid link.")
+        return redirect("home")
+    context = {
+        'location': location
+    }
+    return render(request, "main/alter_Model_Location.html", context)
+

@@ -25,4 +25,6 @@ urlpatterns = [
     path('new/', login_required(LocationCreateView.as_view()), name='create'),
     
     path("view/<str:pk>/", views.view, name = "view"),
+
+    path("view/<str:pk>/alter", views.alter, name = "alter"),
 ]
