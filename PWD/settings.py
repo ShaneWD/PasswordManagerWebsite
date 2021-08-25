@@ -129,3 +129,5 @@ AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'home'
 # After user is logged in, it redirects them to homepage 
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
