@@ -8,6 +8,6 @@ class LocationUpdateForm(forms.ModelForm):
             'website_name',
             'website_link',
             'website_username',
-            'website_password',
+            # 'website_password',
             'website_notes',
         ]

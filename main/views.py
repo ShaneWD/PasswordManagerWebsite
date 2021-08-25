@@ -94,12 +94,17 @@ def view(request, pk):
 
 @login_required
 def alter(request, pk):
+    user = request.user 
     if request.method == 'POST':
-        return HttpResponse ("""<h1>Form method "Post" identified </h1>""")
+        location = Location.objects.get(id=pk, author=user)
+        form = LocationUpdateForm(request.POST, instance=location)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Successfully updated info for {location.website_username}")
+        else:
+            return HttpResponse(form.errors)
     else:
         pass
-
-    user = request.user 
     
     try:
         location = Location.objects.get(id=pk, author=user)
