@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Location
+from .forms import LocationUpdateForm
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -94,13 +95,16 @@ def view(request, pk):
 @login_required
 def alter(request, pk):
     user = request.user 
+    
     try:
         location = Location.objects.get(id=pk, author=user)
+        form = LocationUpdateForm(instance=location)
     except:
         messages.error(request, "Error: Invalid link.")
         return redirect("home")
     context = {
-        'location': location
+        'location': location,
+        'form': form, 
     }
     return render(request, "main/alter_Model_Location.html", context)
 
