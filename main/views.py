@@ -94,6 +94,11 @@ def view(request, pk):
 
 @login_required
 def alter(request, pk):
+    if request.method == 'POST':
+        return HttpResponse ("""<h1>Form method "Post" identified </h1>""")
+    else:
+        pass
+
     user = request.user 
     
     try:

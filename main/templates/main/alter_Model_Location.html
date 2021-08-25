@@ -5,26 +5,28 @@
 {% endblock title %}
 {% block content %}
 <form method="POST">
+    {% csrf_token %}
     <div class="div-container">
-    <div>
-        <h1>This page is for changing the stored password information for {{location}}</h1>
+        {% csrf_token %}
+        <div>
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Name: </h1>{{form.website_name}}
+        </div>
+        <div>
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Link: </h1>{{form.website_link}}
+        </div>
+        <div>
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1>{{form.website_username}}
+        </div>
+        <div>
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Password: </h1>{{form.website_password}}
+        </div>
+        <div>
+            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Notes: </h1>{{form.website_notes}}
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
     </div>
-    <div>
-        <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Name: </h1>{{form.website_name}}
-    </div>
-    <div>
-        <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Link: </h1>{{form.website_link}}
-    </div>
-    <div>
-        <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1>{{form.website_username}}
-    </div>
-    <div>
-        <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Password: </h1>{{form.website_password}}
-    </div>
-    <div>
-        <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Notes: </h1>{{form.website_notes}}
-    </div>
-
-    </div>
+    
 </form>
 {% endblock content %}
