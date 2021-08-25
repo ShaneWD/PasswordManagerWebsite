@@ -1,29 +1,46 @@
-{%extends "main/home.html"%}
-{% load static %}
-{% block title %}
+{%extends "main/home.html"%} {% load static %} {% block title %}
 <title>Change Info</title>
-{% endblock title %}
+{% endblock title %} 
 {% block content %}
 <form method="POST">
+  {% csrf_token %}
+  <div class="div-container">
     {% csrf_token %}
-    <div class="div-container">
-        {% csrf_token %}
-        <div>
-            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Name: </h1>{{form.website_name}}
-        </div>
-        <div>
-            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Link: </h1>{{form.website_link}}
-        </div>
-        <div>
-            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Username: </h1>{{form.website_username}}
-        </div>
-        <div>
-            <h1 class = "main-color" style="display:inline; position: relative;text-align: left">Notes: </h1>{{form.website_notes}}
-        </div>
-        <div>
-            <input type="submit" value="Submit">
-        </div>
+    <div>
+      <h1
+        class="main-color"
+        style="display: inline; position: relative; text-align: left">
+        Name:
+      </h1>
+      {{form.website_name}}
     </div>
-    
+    <div>
+      <h1
+        class="main-color"
+        style="display: inline; position: relative; text-align: left">
+        Link:
+      </h1>
+      {{form.website_link}}
+    </div>
+    <div>
+      <h1
+        class="main-color"
+        style="display: inline; position: relative; text-align: left">
+        Username:
+      </h1>
+      {{form.website_username}}
+    </div>
+    <div>
+      <h1
+        class="main-color"
+        style="display: inline; position: relative; text-align: left">
+        Notes:
+      </h1>
+      {{form.website_notes}}
+    </div>
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+  </div>
 </form>
 {% endblock content %}
